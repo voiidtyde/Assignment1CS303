@@ -55,6 +55,7 @@ int modifyIntegerInArray(int arr[][COLS], int row, int col, int newValue, int& o
     }
 }
 
+//Searches the array for '0' (end of the array) and replaces that 0 with the given value
 void appendIntegerToArray(int arr[][COLS], int newValue) {
     for (int i = 0; i < ROWS; ++i) {
         for (int j = 0; j < COLS; ++j) {
@@ -66,12 +67,14 @@ void appendIntegerToArray(int arr[][COLS], int newValue) {
     }
 }
 
+//Checks to make sure the row and col values are positive, in the correct range, then replaces the value at the given coordinates with 0
 void removeIntegerFromArray(int arr[][COLS], int row, int col) {
     if (row >= 0 && row < ROWS && col >= 0 && col < COLS) {
         arr[row][col] = 0;
     }
 }
 
+//Loops through the array and prints each value in an organized way.
 void printArray(const int arr[][COLS]) {
     for (int i = 0; i < ROWS; ++i) {
         for (int j = 0; j < COLS; ++j) {
