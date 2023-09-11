@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    int array[ROWS][COLS];
+    int array[ROWS][COLS]; //2D array for organization and readability when printing
     const char* filename = "data.txt"; // Replace with your file's name
 
     readFileIntoArray(array, filename);
@@ -13,7 +13,7 @@ int main() {
     cout << "Enter an integer to search for: ";
     cin >> target;
 
-    int row, col;
+    int row, col; //These integers will be passed to the findInt function to identify position
     if (findIntegerInArray(array, target, row, col)) {
         cout << "Integer " << target << " found at index (" << row << ", " << col << ")." << endl;
 

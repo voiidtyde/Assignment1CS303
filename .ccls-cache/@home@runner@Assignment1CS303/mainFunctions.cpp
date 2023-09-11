@@ -7,12 +7,12 @@ using namespace std;
 
 void readFileIntoArray(int arr[][COLS], const char* filename) {
     ifstream inputFile(filename);
-
+    //open file and ensure it was opened properly
     if (!inputFile) {
         cerr << "Error: Unable to open file: " << filename << endl;
         exit(1);
     }
-
+    //Loads the data from data.txt into the array
     for (int i = 0; i < ROWS; ++i) {
         for (int j = 0; j < COLS; ++j) {
             if (!(inputFile >> arr[i][j])) {
@@ -24,12 +24,12 @@ void readFileIntoArray(int arr[][COLS], const char* filename) {
 
     inputFile.close();
 }
-
+//Loops through the rows checking each integer in the array for the target
 bool findIntegerInArray(int arr[][COLS], int target, int& row, int& col) {
     for (int i = 0; i < ROWS; ++i) {
         for (int j = 0; j < COLS; ++j) {
             if (arr[i][j] == target) {
-                row = i;
+                row = i; //sets row and col to the coordinates of the target to be displayed in the main file
                 col = j;
                 return true;
             }
@@ -41,14 +41,14 @@ bool findIntegerInArray(int arr[][COLS], int target, int& row, int& col) {
 }
 
 int modifyIntegerInArray(int arr[][COLS], int row, int col, int newValue, int& oldValue) {
-    try {
+    try { //Checks to ensure the row and col variables are not negative and that they are within the allowed ranges for this 2D array.
         if (row < 0 || row >= ROWS || col < 0 || col >= COLS) {
             throw out_of_range("Index out of range.");
         }
-        oldValue = arr[row][col];
-        arr[row][col] = newValue;
+        oldValue = arr[row][col]; //swaps the old value 
+        arr[row][col] = newValue; //with the new value
         return newValue;
-    } catch (const out_of_range& e) {
+    } catch (const out_of_range& e) {  //If an error was found on the previous if check, catch and print error message
         cerr << "Error: " << e.what() << endl;
         oldValue = -1;
         return -1;
